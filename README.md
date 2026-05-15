@@ -1,53 +1,52 @@
-## SOURCE OSINT AGGREGATOR
+## SOURCE OSINT MAPPING INVESTIGATION
 
-![License](https://img.shields.io/badge/License-GPLv3-blue.svg)
-![Python](https://img.shields.io/badge/Python-3.10+-yellow.svg)
-![React](https://img.shields.io/badge/React-18.x-cyan.svg)
-![OSINT](https://img.shields.io/badge/Intelligence-Unified-red.svg)
-
-**SPY-SOURCE OSINT** adalah platform investigasi digital terpadu yang dirancang untuk mengotomatisasi pengumpulan data dari berbagai sumber terbuka (Open Source Intelligence). Alat ini mengintegrasikan teknik **Deep Dorking**, **Social Media Enumeration**, dan **Data Leak Analysis** ke dalam satu dashboard interaktif bergaya *Cyber-Forensics*.
+Platform investigasi digital terpadu yang dirancang untuk mengotomatisasi pengumpulan data dari berbagai sumber terbuka. Alat ini mengintegrasikan teknik **Deep Dorking** (fokus pada kebocoran data pemerintah Indonesia) dan **Social Media Enumeration** ke dalam satu dashboard interaktif.
 
 ---
 
-## ⚡ Fitur Utama
+## ⚡ Fitur
 
-- **🇮🇩 Localized Deep Dorking:** Algoritma khusus yang memprioritaskan pencarian pada domain pemerintah (`.go.id`) dan pendidikan (`.ac.id`) Indonesia untuk menemukan dokumen publik (PDF/XLSX) yang bocor.
-- **📱 Social Media Presence Scanner:** Melacak jejak akun pada platform populer (Instagram, TikTok, Facebook, GitHub, dll) secara paralel.
-- **🛡️ Glassmorphism Dashboard:** Antarmuka modern yang memudahkan analis untuk memvisualisasikan temuan data tanpa perlu menggunakan terminal secara manual.
-- **🤖 AI-Ready Analysis:** Output data yang diformat khusus agar mudah dianalisis lebih lanjut menggunakan Large Language Models (LLM) seperti Gemini atau ChatGPT.
-
----
-
-## 🛠️ Tech Stack
-
-- **Backend:** FastAPI (Python) - High performance asynchronous processing.
-- **Frontend:** React.js & Tailwind CSS - Glassmorphism UI Design.
-- **Search Engine:** Google Custom Search API integration.
-- **Networking:** HTTPX for fast, concurrent social media probing.
+- **Deep Dorking Logic:** Mencari dokumen sensitif (PDF, XLSX, DOC) di domain `.go.id` dan `.ac.id`.
+- **Social Scanner:** Melacak keberadaan profil target di platform populer secara paralel.
+- **AI-Powered Analysis:** Menghasilkan prompt khusus yang siap dimasukkan ke Gemini/ChatGPT untuk analisis profil risiko otomatis.
+- **Cyber-Forensic UI:** Dashboard dengan desain Glassmorphism untuk pengalaman investigasi profesional.
 
 ---
 
-## 🚀 Panduan Instalasi
-
-### 1. Prasyarat (Prerequisites)
-Pastikan sistem Anda sudah terinstal:
-- Python 3.10 atau lebih baru.
-- Node.js & NPM.
-- API Key dari [Google Programmable Search Engine](https://developers.google.com/custom-search/v1/overview).
-
-### 2. Setup Backend
-```bash
-# Clone repository
-git clone [https://github.com/username/spy-source-osint.git](https://github.com/username/spy-source-osint.git)
-cd spy-source-osint
-
-# Install dependensi Python
+## Instalasi
+​1. Konfigurasi API (Wajib)
+​Dapatkan API Key dari Google Programmable Search. Setelah dapat, buat file .env di root folder :
+```
+GOOGLE_API_KEY=masukkan_api_key_disini
+GOOGLE_CSE_ID=masukkan_cse_id_disini
+```
+2. Setup Backend
+​Buka terminal dan jalankan :
+## Install dependensi
+```
 pip install -r requirements.txt
+```
+## Jalankan backend
+```
+python -m app.main
+```
+3. Setup Frontend
+​Buka terminal baru :
+```
+cd web
+npm install
+npm install axios
+npm start
+```
 
-# Konfigurasi Environment Variables
-# Buat file .env dan masukkan API Key Anda:
-echo "GOOGLE_API_KEY=your_key_here" > .env
-echo "GOOGLE_CSE_ID=your_cse_id_here" >> .env
+## Cara Penggunaan
 
-# Jalankan server backend
-uvicorn app.main:app --reload --port 8001
+1. ​Buka dashboard di http://localhost:3000.
+​Masukkan nama target atau nomor HP pada kolom input.
+2. ​Klik Start Investigation.
+​Hasil dokumen publik dan akun sosial media akan muncul otomatis.
+3. ​Tips : Gunakan tombol "Copy AI Prompt" (jika tersedia di UI) untuk menganalisis temuan secara mendalam menggunakan AI.
+
+​🛡️ Disclaimer
+
+**​Hanya untuk tujuan edukasi dan pertahanan siber. Pengembang tidak bertanggung jawab atas penyalahgunaan alat ini untuk kegiatan ilegal atau pelanggaran privasi (Doxing). Patuhi selalu hukum telekomunikasi yang berlaku di Indonesia.**
